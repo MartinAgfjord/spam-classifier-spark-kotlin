@@ -19,8 +19,8 @@ class SpamClassifier {
 
         val tf = HashingTF(10000)
 
-        val spamFeatures  = spam.map { email : String -> tf.transform(email.split(" ")) }
-        val normalFeatures  = ham.map { email : String -> tf.transform(email.split(" ")) }
+        val spamFeatures  = spam.map { email -> tf.transform(email.split(" ")) }
+        val normalFeatures  = ham.map { email -> tf.transform(email.split(" ")) }
         val positiveExamples = spamFeatures.map { features -> LabeledPoint(1.0, features) }
         val negativeExamples = normalFeatures.map { features -> LabeledPoint(0.0, features) }
 
